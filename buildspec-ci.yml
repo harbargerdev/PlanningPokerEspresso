@@ -9,3 +9,7 @@ phases:
       - java -version
       - ./gradlew build
       - ./gradlew test
+cache:
+  paths:
+    - '/root/.gradle/caches/**/*'
+    - '/root/.gradle/wrapper/**/*'
