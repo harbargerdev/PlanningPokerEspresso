@@ -10,6 +10,10 @@ phases:
       - chmod +x ./gradlew
       - ./gradlew build
       - ./gradlew test
+  post_build:
+    commands:
+      - chmod +x ./scripts/build_status_update.sh
+      - ./scripts/build_status_update.sh
 cache:
   paths:
     - '/root/.gradle/caches/**/*'
