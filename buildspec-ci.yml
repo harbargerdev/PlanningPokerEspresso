@@ -3,13 +3,17 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto17
+      java: corretto21
   build:
     commands:
       - java -version
       - chmod +x ./gradlew
       - ./gradlew build
       - ./gradlew test
+  post_build:
+    commands:
+      - chmod +x ./scripts/build_status_update.sh
+      - ./scripts/build_status_update.sh
 cache:
   paths:
     - '/root/.gradle/caches/**/*'
