@@ -1,11 +1,11 @@
-package com.harbargerdev.planningpokerespresso.Controllers;
+package com.harbargerdev.planningpokerespresso.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.harbargerdev.planningpokerespresso.models.HealthCheckResult;
 import com.harbargerdev.planningpokerespresso.services.HealthCheckService;
+import com.harbargerdev.planningpokerespresso.models.HealthCheckResult;
 
 @RestController
 @RequestMapping("/api")
