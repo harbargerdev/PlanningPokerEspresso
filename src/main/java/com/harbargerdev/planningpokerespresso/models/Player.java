@@ -42,7 +42,6 @@ public class Player {
 }
 
 enum PlayerType {
-    OWNER,
     PARTICIPANT,
     AUDIENCE
 }
