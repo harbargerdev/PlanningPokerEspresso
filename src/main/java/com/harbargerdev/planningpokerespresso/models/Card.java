@@ -19,11 +19,10 @@ public class Card {
 
     private boolean isDone;
 
-    @OneToMany(mappedBy = "card")
+    @OneToMany
     private List<Vote> votes;
 
     // Getters and setters
-
     public UUID getCardId() {
         return cardId;
     }

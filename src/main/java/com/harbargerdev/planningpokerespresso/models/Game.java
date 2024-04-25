@@ -20,10 +20,10 @@ public class Game {
     @JoinColumn(name = "ownerid")
     private Player gameOwner;
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany
     private List<Player> players;
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany
     private List<Card> cards;
 
     @OneToOne
