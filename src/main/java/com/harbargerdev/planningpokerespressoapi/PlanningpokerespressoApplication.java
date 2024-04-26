@@ -1,4 +1,4 @@
-package com.harbargerdev.planningpokerespresso;
+package com.harbargerdev.planningpokerespressoapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

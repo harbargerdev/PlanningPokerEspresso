@@ -1,4 +1,4 @@
-package com.harbargerdev.planningpokerespresso;
+package com.harbargerdev.planningpokerespressoapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,4 +10,8 @@ class PlanningpokerespressoApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void mainStartsApplication() {
+		PlanningpokerespressoApplication.main(new String[] {});
+	}
 }

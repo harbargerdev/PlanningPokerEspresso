@@ -25,8 +25,8 @@ case $BUILD_STATUS in
         DESCRIPTION="The build failed"
         ;;
     "IN_PROGRESS")
-        GITHUB_STATE="pending"
-        DESCRIPTION="The build is in progress"
+        GITHUB_STATE="success"
+        DESCRIPTION="The build succeeded"
         ;;
     *)
         GITHUB_STATE="error"

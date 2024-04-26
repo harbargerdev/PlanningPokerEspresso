@@ -1,7 +1,7 @@
-package com.harbargerdev.planningpokerespresso.services;
+package com.harbargerdev.planningpokerespressoapi.services;
 
-import com.harbargerdev.planningpokerespresso.models.HealthCheckDependencyStatus;
-import com.harbargerdev.planningpokerespresso.models.HealthCheckResult;
+import com.harbargerdev.planningpokerespressoapi.models.HealthCheckDependencyStatus;
+import com.harbargerdev.planningpokerespressoapi.models.HealthCheckResult;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
