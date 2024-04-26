@@ -25,12 +25,7 @@ public class RepositoryTestBase {
             Player player = new Player();
             player.setPlayerId(new UUID(32, 1));
             player.setDisplayName("Player " + i);
-            if (i == 0) {
-                player.setPlayerType(PlayerType.PARTICIPANT);
-            } else {
-                player.setPlayerType(PlayerType.AUDIENCE);
-            }
-            player.setPlayerType(null);
+            player.setPlayerType(i == 0 ? PlayerType.AUDIENCE : PlayerType.PARTICIPANT);
             playerRepository.save(player);
         }
     }
