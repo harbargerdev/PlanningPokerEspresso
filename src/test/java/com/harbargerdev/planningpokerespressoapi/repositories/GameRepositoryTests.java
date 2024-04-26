@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,5 +34,12 @@ public class GameRepositoryTests extends RepositoryTestBase {
         assertTrue(allGames.stream().allMatch(g -> g.getPlayers() != null));
         assertTrue(allGames.stream().allMatch(g -> g.getCards() != null));
         assertTrue(allGames.stream().allMatch(g -> g.getCurrentCard() == null));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        gameRepository.deleteAll();
+        cardRepository.deleteAll();
+        playerRepository.deleteAll();
     }
 }
