@@ -43,6 +43,12 @@ test {
 	}
 }
 
+jacocoTestReport {
+	reports {
+		html.destination file("${buildDir}/reports/jacoco/html")
+	}
+}
+
 jacocoTestCoverageVerification {
     violationRules {
         rule {
@@ -53,6 +59,8 @@ jacocoTestCoverageVerification {
         }
     }
 }
+
+test.finalizedBy jacocoTestReport
 
 jacocoTestCoverageVerification.dependsOn test
 
