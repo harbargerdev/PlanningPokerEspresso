@@ -1,5 +1,6 @@
 package com.harbargerdev.planningpokerespressoapi.repositories;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -49,6 +50,8 @@ public class RepositoryTestBase {
     protected void seedGames() {
         Game game = new Game();
         game.setGameId(new UUID(32, 1));
+        game.setDisplayName("Test Game");
+        game.setStartTime(LocalDateTime.now());
         game.setCards(cardRepository.findAll());
         game.setPlayers(playerRepository.findAll());
         game.setGameOwner(playerRepository.findAll().get(0));
