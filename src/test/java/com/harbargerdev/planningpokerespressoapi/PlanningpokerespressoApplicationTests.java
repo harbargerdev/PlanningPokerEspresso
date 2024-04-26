@@ -10,4 +10,8 @@ class PlanningpokerespressoApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void mainStartsApplication() {
+		PlanningpokerespressoApplication.main(new String[] {});
+	}
 }
