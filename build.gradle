@@ -45,7 +45,6 @@ test {
 
 jacocoTestReport {
 	reports {
-		html.destination file("${buildDir}/reports/jacoco/html")
 	}
 }
 
