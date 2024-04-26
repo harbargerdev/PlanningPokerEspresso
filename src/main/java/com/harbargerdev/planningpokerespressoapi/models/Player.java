@@ -40,8 +40,3 @@ public class Player {
         this.playerType = playerType;
     }
 }
-
-enum PlayerType {
-    PARTICIPANT,
-    AUDIENCE
-}
