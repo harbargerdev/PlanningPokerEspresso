@@ -36,12 +36,24 @@ dependencies {
 }
 
 test {
-	jacoco {
-		enabled = true
+	useJUnitPlatform() {
+		jacoco {
+			enabled = true
+		}
 	}
-	useJUnitPlatform()
 }
 
-jacocoTestReport {
-	dependsOn test
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+            failOnViolation true
+        }
+    }
 }
+
+jacocoTestCoverageVerification.dependsOn test
+
+check.dependsOn jacocoTestCoverageVerification
