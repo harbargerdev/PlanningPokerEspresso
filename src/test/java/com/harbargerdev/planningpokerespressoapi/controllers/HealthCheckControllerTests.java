@@ -1,6 +1,5 @@
 package com.harbargerdev.planningpokerespressoapi.controllers;
 
-import com.harbargerdev.planningpokerespressoapi.controllers.HealthCheckController;
 import com.harbargerdev.planningpokerespressoapi.models.HealthCheckDependencyStatus;
 import com.harbargerdev.planningpokerespressoapi.models.HealthCheckResult;
 import com.harbargerdev.planningpokerespressoapi.services.HealthCheckService;
