@@ -1,4 +1,4 @@
-package com.harbargerdev.planningpokerespresso.models;
+package com.harbargerdev.planningpokerespressoapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

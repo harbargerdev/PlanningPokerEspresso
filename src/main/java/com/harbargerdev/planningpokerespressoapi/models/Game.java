@@ -1,4 +1,4 @@
-package com.harbargerdev.planningpokerespresso.models;
+package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

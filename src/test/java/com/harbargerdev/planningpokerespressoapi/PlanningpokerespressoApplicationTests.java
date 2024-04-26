@@ -1,4 +1,4 @@
-package com.harbargerdev.planningpokerespresso;
+package com.harbargerdev.planningpokerespressoapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

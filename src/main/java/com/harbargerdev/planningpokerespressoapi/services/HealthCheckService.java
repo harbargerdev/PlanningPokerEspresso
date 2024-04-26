@@ -1,9 +1,9 @@
-package com.harbargerdev.planningpokerespresso.services;
+package com.harbargerdev.planningpokerespressoapi.services;
 
 import org.springframework.stereotype.Service;
 
-import com.harbargerdev.planningpokerespresso.models.HealthCheckDependencyStatus;
-import com.harbargerdev.planningpokerespresso.models.HealthCheckResult;
+import com.harbargerdev.planningpokerespressoapi.models.HealthCheckDependencyStatus;
+import com.harbargerdev.planningpokerespressoapi.models.HealthCheckResult;
 
 @Service
 public class HealthCheckService {
