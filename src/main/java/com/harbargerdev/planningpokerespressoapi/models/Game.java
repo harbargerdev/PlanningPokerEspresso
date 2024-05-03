@@ -2,6 +2,7 @@ package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +30,10 @@ public class Game {
     @OneToOne
     @JoinColumn(name = "currentcardid")
     private Card currentCard;
+
+    public Game() {
+        players = new ArrayList<>();
+    }
 
     // Getters and setters
 
