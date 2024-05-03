@@ -33,7 +33,7 @@ public class GameService {
         game.setGameOwner(gameOwner.get());
         game.getPlayers().add(gameOwner.get());
 
-        gamesRepository.save(game);
+        game = gamesRepository.save(game);
 
         NewGameResponse response = new NewGameResponse();
         response.setGameId(game.getGameId());
