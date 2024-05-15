@@ -1,6 +1,9 @@
 package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,86 +13,41 @@ import java.util.UUID;
 public class Game {
     
     @Id
-    @GeneratedValue
-    private UUID gameId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Getter
+    @Setter
+    private String gameId;
 
+    @Getter
+    @Setter
     private String displayName;
 
+    @Getter
+    @Setter
     private LocalDateTime startTime;
 
-    @ManyToOne
+    @OneToOne(optional = true)
     @JoinColumn(name = "ownerid")
+    @Getter
+    @Setter
     private Player gameOwner;
 
+    @Getter
     @OneToMany
     private List<Player> players;
 
+    @Getter
     @OneToMany
     private List<Card> cards;
 
-    @OneToOne
+    @Getter
+    @Setter
+    @OneToOne(optional = true)
     @JoinColumn(name = "currentcardid")
     private Card currentCard;
 
     public Game() {
         players = new ArrayList<>();
-    }
-
-    // Getters and setters
-
-    public UUID getGameId() {
-        return gameId;
-    }
-
-    public void setGameId(UUID gameId) {
-        this.gameId = gameId;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public Player getGameOwner() {
-        return gameOwner;
-    }
-
-    public void setGameOwner(Player gameOwner) {
-        this.gameOwner = gameOwner;
-    }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
-
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
-    }
-
-    public Card getCurrentCard() {
-        return currentCard;
-    }
-
-    public void setCurrentCard(Card currentCard) {
-        this.currentCard = currentCard;
+        cards = new ArrayList<>();
     }
 }

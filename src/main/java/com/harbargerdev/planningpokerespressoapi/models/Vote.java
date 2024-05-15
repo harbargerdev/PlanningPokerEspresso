@@ -1,56 +1,33 @@
 package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
 public class Vote {
     
     @Id
-    @GeneratedValue
-    private UUID voteId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Getter
+    @Setter
+    private String voteId;
 
     @ManyToOne
     @JoinColumn(name = "cardid")
+    @Getter
+    @Setter
     private Card card;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "playerid")
+    @Getter
+    @Setter
     private Player player;
 
-    private int score;
-
-    // Getters and setters
-
-    public UUID getVoteId() {
-        return voteId;
-    }
-
-    public void setVoteId(UUID voteId) {
-        this.voteId = voteId;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
+    @Getter
+    @Setter
+    private String estimate;
 }

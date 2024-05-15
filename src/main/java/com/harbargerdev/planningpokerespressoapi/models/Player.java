@@ -1,42 +1,32 @@
 package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
 public class Player {
     
     @Id
-    @GeneratedValue
-    private UUID playerId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Getter
+    @Setter
+    private String playerId;
 
+    @Getter
+    @Setter
     private String displayName;
 
+    @Getter
+    @Setter
     @Enumerated(EnumType.STRING)
     private PlayerType playerType;
 
-    // Getters and setters
-    public UUID getPlayerId() {
-        return playerId;
-    }
-
-    public void setPlayerId(UUID playerId) {
-        this.playerId = playerId;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public PlayerType getPlayerType() {
-        return playerType;
-    }
-
-    public void setPlayerType(PlayerType playerType) {
-        this.playerType = playerType;
-    }
+    @OneToOne
+    @JoinColumn(name = "gameid")
+    @Getter
+    @Setter
+    private Game game;
 }

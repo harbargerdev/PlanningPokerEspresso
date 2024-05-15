@@ -1,73 +1,52 @@
 package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.UUID;
+
+import org.hibernate.annotations.IdGeneratorType;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Card {
     
     @Id
-    @GeneratedValue
-    private UUID cardId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Getter
+    @Setter
+    private String cardId;
 
+    @Getter
+    @Setter
     private String displayName;
 
-    private int finalEstimate;
+    @Getter
+    @Setter
+    private String finalEstimate;
 
+    @Getter
+    @Setter
     private boolean isLocked;
 
+    @Getter
+    @Setter
     private boolean isDone;
 
+    @Getter
+    @Setter
+    @OneToOne
+    @JoinColumn(name = "gameid")
+    private Game game;
+
+    @Getter
     @OneToMany
     private List<Vote> votes;
 
-    // Getters and setters
-    public UUID getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(UUID cardId) {
-        this.cardId = cardId;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public int getFinalEstimation() {
-        return finalEstimate;
-    }
-
-    public void setFinalEstimation(int finalEstimate) {
-        this.finalEstimate = finalEstimate;
-    }
-
-    public boolean isLocked() {
-        return isLocked;
-    }
-
-    public void setLocked(boolean locked) {
-        isLocked = locked;
-    }
-
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
-    }
-
-    public List<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
+    public Card() {
+        votes = new ArrayList<>();
     }
 }
