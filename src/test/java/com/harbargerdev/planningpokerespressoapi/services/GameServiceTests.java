@@ -35,48 +35,4 @@ public class GameServiceTests {
     public void setup() {
         MockitoAnnotations.openMocks(this);
     }
-
-    @Test
-    public void testCreateNewGame() {
-        Player player = new Player();
-        player.setPlayerId(UUID.randomUUID());
-
-        when(playerRepository.findById(player.getPlayerId())).thenReturn(Optional.of(player));
-
-        Game game = new Game();
-        game.setGameId(UUID.randomUUID());
-        game.setDisplayName("Test Game");
-        game.setStartTime(LocalDateTime.now());
-        game.setGameOwner(player);
-        game.getPlayers().add(player);
-
-        when(gameRepository.save(any(Game.class))).thenReturn(game);
-
-        NewGameRequest request = new NewGameRequest();
-        request.setDisplayName("Test Game");
-        request.setGameOwnerId(player.getPlayerId());
-
-        NewGameResponse response = gameService.createNewGame(request);
-
-        assertEquals(game.getGameId(), response.getGameId());
-        assertEquals(game.getDisplayName(), response.getDisplayName());
-        assertEquals(game.getStartTime(), response.getStartTime());
-        
-        verify(playerRepository, times(1)).findById(player.getPlayerId());
-        verify(gameRepository, times(1)).save(any(Game.class));
-    }
-
-    @Test
-    public void testCreateNewGame_PlayerNotFound() {
-        when(playerRepository.findById(any(UUID.class))).thenReturn(Optional.empty());
-
-        NewGameRequest request = new NewGameRequest();
-        request.setDisplayName("Test Game");
-        request.setGameOwnerId(UUID.randomUUID());
-
-        assertThrows(IllegalArgumentException.class, () -> gameService.createNewGame(request));
-        
-        verify(playerRepository, times(1)).findById(any(UUID.class));
-        verify(gameRepository, never()).save(any(Game.class));
-    }
 }

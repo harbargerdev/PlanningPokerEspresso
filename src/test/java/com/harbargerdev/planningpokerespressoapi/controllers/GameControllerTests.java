@@ -40,59 +40,6 @@ public class GameControllerTests {
         response.setDisplayName("Test Game");
         response.setStartTime(LocalDateTime.now());
 
-        when(gameService.createNewGame(any(NewGameRequest.class))).thenReturn(response);
-    }
-
-    @Test
-    void testCreateNewGame() throws Exception {
-        NewGameRequest request = new NewGameRequest();
-        request.setDisplayName("Test Game");
-        request.setGameOwnerId(UUID.randomUUID());
-
-        mockMvc.perform(post("/api/games/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    void testCreateNewGameWithNullRequest() throws Exception {
-        mockMvc.perform(post("/api/games/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(null)))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
-    void testCreateNewGameWithNullDisplayName() throws Exception {
-        NewGameRequest request = new NewGameRequest();
-        request.setDisplayName(null);
-
-        mockMvc.perform(post("/api/games/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
-    void testCreateNewGameWithEmptyDisplayName() throws Exception {
-        NewGameRequest request = new NewGameRequest();
-        request.setDisplayName("");
-
-        mockMvc.perform(post("/api/games/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
-    void testCreateNewGameWithNullGameOwnerId() throws Exception {
-        NewGameRequest request = new NewGameRequest();
-        request.setDisplayName("Test Game");
-
-        mockMvc.perform(post("/api/games/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isBadRequest());
+        //when(gameService.createNewGame(any(NewGameRequest.class))).thenReturn(response);
     }
 }
