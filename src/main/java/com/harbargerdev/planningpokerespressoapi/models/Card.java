@@ -7,38 +7,32 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Entity
 public class Card {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Getter
     @Setter
     private String cardId;
 
-    @Getter
     @Setter
     private String displayName;
 
-    @Getter
     @Setter
     private String finalEstimate;
 
-    @Getter
     @Setter
     private boolean isLocked;
 
-    @Getter
     @Setter
     private boolean isDone;
 
-    @Getter
     @Setter
     @OneToOne
     @JoinColumn(name = "gameid")
     private Game game;
 
-    @Getter
     @OneToMany
     private List<Vote> votes;
 

@@ -6,28 +6,22 @@ import lombok.Setter;
 
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 public class Vote {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Getter
-    @Setter
     private String voteId;
 
     @ManyToOne
     @JoinColumn(name = "cardid")
-    @Getter
-    @Setter
     private Card card;
 
     @OneToOne
     @JoinColumn(name = "playerid")
-    @Getter
-    @Setter
     private Player player;
 
-    @Getter
-    @Setter
     private String estimate;
 }

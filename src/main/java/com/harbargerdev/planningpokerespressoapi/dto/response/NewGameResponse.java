@@ -10,26 +10,22 @@ import com.harbargerdev.planningpokerespressoapi.models.Player;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
 public class NewGameResponse {
     
-    @Getter
     @Setter
     private String gameId;
 
-    @Getter
     @Setter
     private String displayName;
 
-    @Getter
     @Setter
     private LocalDateTime startTime;
 
-    @Getter
     @Setter
     private Player gameOwner;
 
-    @Getter
-    private List<Player> players;
+    private final List<Player> players;
 
     public NewGameResponse() {
         players = new ArrayList<>();

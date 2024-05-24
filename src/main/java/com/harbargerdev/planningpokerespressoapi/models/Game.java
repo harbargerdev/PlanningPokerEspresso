@@ -9,38 +9,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 @Entity
 public class Game {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Getter
     @Setter
     private String gameId;
 
-    @Getter
     @Setter
     private String displayName;
 
-    @Getter
     @Setter
     private LocalDateTime startTime;
 
     @OneToOne(optional = true)
     @JoinColumn(name = "ownerid")
-    @Getter
     @Setter
     private Player gameOwner;
 
-    @Getter
+    @OneToMany(mappedBy = "player")
     @OneToMany
     private List<Player> players;
 
-    @Getter
+    @OneToMany(mappedBy = "card")
     @OneToMany
     private List<Card> cards;
 
-    @Getter
     @Setter
     @OneToOne(optional = true)
     @JoinColumn(name = "currentcardid")
