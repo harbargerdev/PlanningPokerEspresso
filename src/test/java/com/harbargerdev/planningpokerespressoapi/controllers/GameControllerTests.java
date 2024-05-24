@@ -36,7 +36,7 @@ public class GameControllerTests {
     @BeforeEach
     void setup() {
         NewGameResponse response = new NewGameResponse();
-        response.setGameId(UUID.randomUUID());
+        response.setGameId(UUID.randomUUID().toString());
         response.setDisplayName("Test Game");
         response.setStartTime(LocalDateTime.now());
 

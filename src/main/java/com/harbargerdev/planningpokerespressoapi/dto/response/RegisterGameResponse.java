@@ -6,13 +6,11 @@ import com.harbargerdev.planningpokerespressoapi.models.Player;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 public class RegisterGameResponse {
-    
-    @Getter
-    @Setter
+
     private Game game;
 
-    @Getter
-    @Setter
     private Player owner;
 }

@@ -14,7 +14,7 @@ public class NewGameResponse {
     
     @Getter
     @Setter
-    private UUID gameId;
+    private String gameId;
 
     @Getter
     @Setter
