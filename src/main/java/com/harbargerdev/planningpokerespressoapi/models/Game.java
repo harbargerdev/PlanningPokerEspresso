@@ -30,11 +30,9 @@ public class Game {
     private Player gameOwner;
 
     @OneToMany(mappedBy = "player")
-    @OneToMany
     private List<Player> players;
 
     @OneToMany(mappedBy = "card")
-    @OneToMany
     private List<Card> cards;
 
     @Setter
