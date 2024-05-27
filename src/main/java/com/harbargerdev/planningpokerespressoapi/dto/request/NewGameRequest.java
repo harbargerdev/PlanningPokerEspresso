@@ -5,13 +5,11 @@ import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
+@Setter
+@Getter
 public class NewGameRequest {
     
-    @Getter
-    @Setter
     private String displayName;
 
-    @Getter
-    @Setter
-    private UUID gameOwnerId;
+    private String gameOwnerId;
 }

@@ -9,8 +9,4 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RegisterGameResponse {
-
-    private Game game;
-
-    private Player owner;
 }

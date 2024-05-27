@@ -12,22 +12,4 @@ import lombok.Setter;
 
 @Getter
 public class NewGameResponse {
-    
-    @Setter
-    private String gameId;
-
-    @Setter
-    private String displayName;
-
-    @Setter
-    private LocalDateTime startTime;
-
-    @Setter
-    private Player gameOwner;
-
-    private final List<Player> players;
-
-    public NewGameResponse() {
-        players = new ArrayList<>();
-    }
 }
