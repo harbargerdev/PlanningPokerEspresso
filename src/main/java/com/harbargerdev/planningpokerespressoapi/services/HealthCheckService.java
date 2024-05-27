@@ -25,8 +25,6 @@ public class HealthCheckService {
     @Autowired
     private VoteRepository voteRepository;
 
-    private final String AllDependenciesAreUpAndRunning = "All dependencies are up and running!";
-
     public HealthCheckResult checkHealth() {
 
         try{
@@ -38,6 +36,6 @@ public class HealthCheckService {
             return new HealthCheckResult(HealthCheckDependencyStatus.DOWN, e.getMessage());
         }
 
-        return new HealthCheckResult(HealthCheckDependencyStatus.UP, AllDependenciesAreUpAndRunning);
+        return new HealthCheckResult(HealthCheckDependencyStatus.UP, "All dependencies are up and running!");
     }
 }
