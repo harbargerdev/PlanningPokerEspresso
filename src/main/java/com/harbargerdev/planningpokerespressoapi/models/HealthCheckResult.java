@@ -2,6 +2,11 @@ package com.harbargerdev.planningpokerespressoapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class HealthCheckResult {
     
     @JsonProperty("status")
@@ -15,22 +20,6 @@ public class HealthCheckResult {
 
     public HealthCheckResult(HealthCheckDependencyStatus status, String message) {
         this.status = status;
-        this.message = message;
-    }
-
-    public HealthCheckDependencyStatus getStatus() {
-        return status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setStatus(HealthCheckDependencyStatus status) {
-        this.status = status;
-    }
-
-    public void setMessage(String message) {
         this.message = message;
     }
 }

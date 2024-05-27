@@ -1,90 +1,50 @@
 package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
+@Getter
+@Entity(name = "game")
 public class Game {
     
     @Id
     @GeneratedValue
+    @Setter
+    @Column(name = "game_id")
     private UUID gameId;
 
+    @Setter
+    @Column(name = "display_name")
     private String displayName;
 
+    @Setter
+    @Column(name = "start_time", columnDefinition = "TIMESTAMP")
     private LocalDateTime startTime;
 
-    @ManyToOne
-    @JoinColumn(name = "ownerid")
+    @OneToOne
+    @JoinColumn(name = "owner_id")
+    @Setter
     private Player gameOwner;
 
-    @OneToMany
-    private List<Player> players;
+    @OneToMany(mappedBy = "game")
+    private final List<Player> players;
 
-    @OneToMany
-    private List<Card> cards;
+    @OneToMany(mappedBy = "game")
+    private final List<Card> cards;
 
+    @Setter
     @OneToOne
-    @JoinColumn(name = "currentcardid")
+    @JoinColumn(name = "current_card_id")
     private Card currentCard;
 
-    // Getters and setters
-
-    public UUID getGameId() {
-        return gameId;
-    }
-
-    public void setGameId(UUID gameId) {
-        this.gameId = gameId;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public Player getGameOwner() {
-        return gameOwner;
-    }
-
-    public void setGameOwner(Player gameOwner) {
-        this.gameOwner = gameOwner;
-    }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
-
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
-    }
-
-    public Card getCurrentCard() {
-        return currentCard;
-    }
-
-    public void setCurrentCard(Card currentCard) {
-        this.currentCard = currentCard;
+    public Game() {
+        players = new ArrayList<>();
+        cards = new ArrayList<>();
     }
 }

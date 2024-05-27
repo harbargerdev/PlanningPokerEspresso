@@ -1,73 +1,48 @@
 package com.harbargerdev.planningpokerespressoapi.models;
 
 import jakarta.persistence.*;
-import java.util.UUID;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@Entity(name = "card")
 public class Card {
     
     @Id
     @GeneratedValue
+    @Setter
+    @Column(name = "card_id")
     private UUID cardId;
 
+    @Setter
+    @Column(name = "display_name")
     private String displayName;
 
-    private int finalEstimate;
+    @Setter
+    @Column(name = "final_estimate")
+    private String finalEstimate;
 
+    @Setter
+    @Column(name = "is_locked")
     private boolean isLocked;
 
+    @Setter
+    @Column(name = "is_done")
     private boolean isDone;
 
-    @OneToMany
-    private List<Vote> votes;
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "gameId", nullable = false)
+    private Game game;
 
-    // Getters and setters
-    public UUID getCardId() {
-        return cardId;
-    }
+    @OneToMany(mappedBy = "card")
+    private final List<Vote> votes;
 
-    public void setCardId(UUID cardId) {
-        this.cardId = cardId;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public int getFinalEstimation() {
-        return finalEstimate;
-    }
-
-    public void setFinalEstimation(int finalEstimate) {
-        this.finalEstimate = finalEstimate;
-    }
-
-    public boolean isLocked() {
-        return isLocked;
-    }
-
-    public void setLocked(boolean locked) {
-        isLocked = locked;
-    }
-
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
-    }
-
-    public List<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
+    public Card() {
+        votes = new ArrayList<>();
     }
 }
