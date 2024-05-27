@@ -12,15 +12,15 @@ import java.util.UUID;
 public class Vote {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String voteId;
+    @GeneratedValue
+    private UUID voteId;
 
     @ManyToOne
-    @JoinColumn(name = "cardid")
+    @JoinColumn(name = "card_id")
     private Card card;
 
     @OneToOne
-    @JoinColumn(name = "playerid")
+    @JoinColumn(name = "playerId")
     private Player player;
 
     private String estimate;

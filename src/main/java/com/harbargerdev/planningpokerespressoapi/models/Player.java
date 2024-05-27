@@ -12,8 +12,8 @@ import java.util.UUID;
 public class Player {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String playerId;
+    @GeneratedValue
+    private UUID playerId;
 
     private String displayName;
 
@@ -21,6 +21,6 @@ public class Player {
     private PlayerType playerType;
 
     @OneToOne
-    @JoinColumn(name = "gameid")
+    @JoinColumn(name = "gameId")
     private Game game;
 }

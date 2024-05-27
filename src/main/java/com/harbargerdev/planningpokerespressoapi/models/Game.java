@@ -14,30 +14,31 @@ import java.util.UUID;
 public class Game {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue
     @Setter
-    private String gameId;
+    private UUID gameId;
 
     @Setter
     private String displayName;
 
     @Setter
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime startTime;
 
-    @OneToOne(optional = true)
-    @JoinColumn(name = "ownerid")
+    @OneToOne
+    @JoinColumn(name = "ownerId")
     @Setter
     private Player gameOwner;
 
-    @OneToMany(mappedBy = "player")
-    private List<Player> players;
+    @OneToMany(mappedBy = "game")
+    private final List<Player> players;
 
-    @OneToMany(mappedBy = "card")
-    private List<Card> cards;
+    @OneToMany(mappedBy = "game")
+    private final List<Card> cards;
 
     @Setter
-    @OneToOne(optional = true)
-    @JoinColumn(name = "currentcardid")
+    @OneToOne
+    @JoinColumn(name = "currentCardId")
     private Card currentCard;
 
     public Game() {

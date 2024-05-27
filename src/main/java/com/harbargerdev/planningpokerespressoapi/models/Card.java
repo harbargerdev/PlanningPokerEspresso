@@ -6,15 +6,16 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Entity
 public class Card {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue
     @Setter
-    private String cardId;
+    private UUID cardId;
 
     @Setter
     private String displayName;
@@ -29,12 +30,12 @@ public class Card {
     private boolean isDone;
 
     @Setter
-    @OneToOne
-    @JoinColumn(name = "gameid")
+    @ManyToOne
+    @JoinColumn(name = "gameId", nullable = false)
     private Game game;
 
-    @OneToMany
-    private List<Vote> votes;
+    @OneToMany(mappedBy = "card")
+    private final List<Vote> votes;
 
     public Card() {
         votes = new ArrayList<>();
