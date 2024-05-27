@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-@Entity
+@Entity(name = "card")
 public class Card {
     
     @Id
