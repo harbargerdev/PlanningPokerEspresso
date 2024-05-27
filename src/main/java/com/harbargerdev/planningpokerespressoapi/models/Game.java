@@ -16,17 +16,19 @@ public class Game {
     @Id
     @GeneratedValue
     @Setter
+    @Column(name = "game_id")
     private UUID gameId;
 
     @Setter
+    @Column(name = "display_name")
     private String displayName;
 
     @Setter
-    @Column(columnDefinition = "TIMESTAMP")
+    @Column(name = "start_time", columnDefinition = "TIMESTAMP")
     private LocalDateTime startTime;
 
     @OneToOne
-    @JoinColumn(name = "ownerId")
+    @JoinColumn(name = "owner_id")
     @Setter
     private Player gameOwner;
 
@@ -38,7 +40,7 @@ public class Game {
 
     @Setter
     @OneToOne
-    @JoinColumn(name = "currentCardId")
+    @JoinColumn(name = "current_card_id")
     private Card currentCard;
 
     public Game() {

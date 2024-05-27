@@ -13,6 +13,7 @@ public class Vote {
     
     @Id
     @GeneratedValue
+    @Column(name = "vote_id")
     private UUID voteId;
 
     @ManyToOne
@@ -20,8 +21,9 @@ public class Vote {
     private Card card;
 
     @OneToOne
-    @JoinColumn(name = "playerId")
+    @JoinColumn(name = "player_id")
     private Player player;
 
+    @Column(name = "estimate")
     private String estimate;
 }

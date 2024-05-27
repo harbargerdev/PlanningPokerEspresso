@@ -15,18 +15,23 @@ public class Card {
     @Id
     @GeneratedValue
     @Setter
+    @Column(name = "card_id")
     private UUID cardId;
 
     @Setter
+    @Column(name = "display_name")
     private String displayName;
 
     @Setter
+    @Column(name = "final_estimate")
     private String finalEstimate;
 
     @Setter
+    @Column(name = "is_locked")
     private boolean isLocked;
 
     @Setter
+    @Column(name = "is_done")
     private boolean isDone;
 
     @Setter
