@@ -1,6 +1,7 @@
 package com.harbargerdev.planningpokerespressoapi.services;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.harbargerdev.planningpokerespressoapi.dto.response.RegisterGameResponse;
 import com.harbargerdev.planningpokerespressoapi.models.Player;
@@ -27,30 +28,38 @@ public class GameService {
     private PlayerRepository playerRepository;
 
     public RegisterGameResponse registerNewGame(RegisterGameRequest request) {
+
+        RegisterGameResponse response = new RegisterGameResponse();
+
         try {
             Game game = new Game();
             game.setDisplayName(request.getGameDisplayName());
             game.setStartTime(LocalDateTime.now());
-            gamesRepository.save(game);
+            Game persistedGame = gamesRepository.save(game);
+
+            response.setGameId(persistedGame.getGameId().toString());
+            response.setGameDisplayName(persistedGame.getDisplayName());
 
             Player owner = new Player();
             owner.setDisplayName(request.getOwnerDisplayName());
             owner.setPlayerType(PlayerType.valueOf(request.getOwnerPlayerType()));
-            owner.setGame(game);
-            playerRepository.save(owner);
+            owner.setGame(persistedGame);
+            Player persistedOwner = playerRepository.save(owner);
 
-            game.setGameOwner(owner);
-            gamesRepository.save(game);
+            game.setGameOwner(persistedOwner);
+            gamesRepository.save(persistedGame);
 
-            RegisterGameResponse response = new RegisterGameResponse();
-            response.setGameId(game.getGameId().toString());
-            response.setGameDisplayName(game.getDisplayName());
-            response.setOwnerId(owner.getPlayerId().toString());
-            response.setOwnerDisplayName(owner.getDisplayName());
+            response.setOwnerId(persistedOwner.getPlayerId().toString());
+            response.setOwnerDisplayName(persistedOwner.getDisplayName());
 
             return response;
         } catch (Exception ex) {
             logger.error("Error registering new game", ex);
+
+            if (response.getGameId() != null) {
+                gamesRepository.deleteById(UUID.fromString(response.getGameId()));
+            }
+
             throw ex;
         }
     }
