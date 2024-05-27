@@ -42,7 +42,7 @@ public class GameService {
 
             Player owner = new Player();
             owner.setDisplayName(request.getOwnerDisplayName());
-            owner.setPlayerType(PlayerType.valueOf(request.getOwnerPlayerType()));
+            owner.setPlayerType(PlayerType.valueOf(request.getOwnerPlayerType().toUpperCase()));
             owner.setGame(persistedGame);
             Player persistedOwner = playerRepository.save(owner);
 
