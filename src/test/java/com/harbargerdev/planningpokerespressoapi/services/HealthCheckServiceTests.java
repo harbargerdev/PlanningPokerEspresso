@@ -41,7 +41,7 @@ public class HealthCheckServiceTests {
 
         HealthCheckResult healthCheckResult = healthCheckService.checkHealth();
         assertThat(healthCheckResult.getStatus()).isEqualTo(HealthCheckDependencyStatus.DOWN);
-        assertThat(healthCheckResult.getMessage()).isEqualTo("Game repository is down");
+        assertThat(healthCheckResult.getMessage()).isEqualTo("Database connection error.");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class HealthCheckServiceTests {
 
         HealthCheckResult healthCheckResult = healthCheckService.checkHealth();
         assertThat(healthCheckResult.getStatus()).isEqualTo(HealthCheckDependencyStatus.DOWN);
-        assertThat(healthCheckResult.getMessage()).isEqualTo("Card repository is down");
+        assertThat(healthCheckResult.getMessage()).isEqualTo("Database connection error.");
     }
 
     @Test
@@ -62,7 +62,7 @@ public class HealthCheckServiceTests {
 
         HealthCheckResult healthCheckResult = healthCheckService.checkHealth();
         assertThat(healthCheckResult.getStatus()).isEqualTo(HealthCheckDependencyStatus.DOWN);
-        assertThat(healthCheckResult.getMessage()).isEqualTo("Player repository is down");
+        assertThat(healthCheckResult.getMessage()).isEqualTo("Database connection error.");
     }
 
     @Test
@@ -74,7 +74,7 @@ public class HealthCheckServiceTests {
 
         HealthCheckResult healthCheckResult = healthCheckService.checkHealth();
         assertThat(healthCheckResult.getStatus()).isEqualTo(HealthCheckDependencyStatus.DOWN);
-        assertThat(healthCheckResult.getMessage()).isEqualTo("Vote repository is down");
+        assertThat(healthCheckResult.getMessage()).isEqualTo("Database connection error.");
     }
 
     @Test

@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import com.harbargerdev.planningpokerespressoapi.dto.response.RegisterGameResponse;
 import com.harbargerdev.planningpokerespressoapi.models.Player;
 import com.harbargerdev.planningpokerespressoapi.models.PlayerType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import com.harbargerdev.planningpokerespressoapi.repositories.PlayerRepository;
 
 @Service
 public class GameService {
+
+    private static final Logger logger = LoggerFactory.getLogger(GameService.class);
 
     @Autowired
     private GameRepository gamesRepository;
@@ -46,6 +50,7 @@ public class GameService {
 
             return response;
         } catch (Exception ex) {
+            logger.error("Error registering new game", ex);
             throw ex;
         }
     }
