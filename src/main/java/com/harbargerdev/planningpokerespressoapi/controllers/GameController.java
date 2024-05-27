@@ -1,15 +1,12 @@
 package com.harbargerdev.planningpokerespressoapi.controllers;
 
+import com.harbargerdev.planningpokerespressoapi.dto.response.RegisterGameResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.harbargerdev.planningpokerespressoapi.dto.request.NewGameRequest;
-import com.harbargerdev.planningpokerespressoapi.dto.response.NewGameResponse;
+import com.harbargerdev.planningpokerespressoapi.dto.request.RegisterGameRequest;
 import com.harbargerdev.planningpokerespressoapi.services.GameService;
 
 @RestController
@@ -19,22 +16,22 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @RequestMapping("/create")
-    public NewGameResponse createNewGame(@RequestBody NewGameRequest request) {
+    @PostMapping("/register")
+    public RegisterGameResponse registerNewGame(@RequestBody RegisterGameRequest request) {
 
-        if (request == null) {
-            throw new IllegalArgumentException("Request cannot be null");
+        if (request.getGameDisplayName() == null || request.getGameDisplayName().isEmpty()) {
+            throw new IllegalArgumentException("Game display name is required");
         }
 
-        if (request.getDisplayName() == null || request.getDisplayName().isEmpty()) {
-            throw new IllegalArgumentException("Display name cannot be null or empty");
+        if (request.getOwnerDisplayName() == null || request.getOwnerDisplayName().isEmpty()) {
+            throw new IllegalArgumentException("Owner display name is required");
         }
 
-        if (request.getGameOwnerId() == null) {
-            throw new IllegalArgumentException("Game owner ID cannot be null or emtpy");
+        if (request.getOwnerPlayerType() == null || request.getOwnerPlayerType().isEmpty()) {
+            throw new IllegalArgumentException("Owner player type is required");
         }
 
-        return gameService.createNewGame(request);
+        return gameService.registerNewGame(request);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
